@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function sorting(angka) {
+        let count = 0;
+        for (let i = angka.length; i > 0; i--) {
+          for (let j = 0; j <= i; j++) {
+            // console.log(angka[j], angka[j + 1]);
+            if (angka[j] > angka[j + 1]) {
+              count += 1;
+
+              var temp = angka[j];
+              angka[j] = angka[j + 1];
+              angka[j + 1] = temp;
+              console.log(
+                `${count}.[ ${angka[j]}, ${angka[j + 1]}] -> ${angka} `
+              );
+            }
+          }
+        }
+        console.log(`Jumlah Swap: ${count} `);
+
+        return angka;
+      }
+
+      sorting([4, 9, 7, 5, 8, 9, 3]);
+    </script>
+  </body>
+</html>

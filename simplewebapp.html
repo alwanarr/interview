@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input
+      type="text"
+      name="text"
+      id="text"
+      placeholder="ketikan sesuatu"
+      tabindex="0"
+    />
+
+    <button id="undo">Undo</button>
+    <button id="reverse">Reverse</button>
+    <div id="muncultext"></div>
+    <script>
+      let munculText = document.querySelector("#muncultext");
+      let undo = document.querySelector("#undo");
+      let reverse = document.querySelector("#reverse");
+      let text = document.querySelector("#text");
+
+      let tampung = [];
+      let originalText = text.value;
+      reverse.addEventListener("click", () => {
+        reverseText(text.value);
+        tampung.push("reverse");
+      });
+
+      undo.addEventListener("click", () => {
+        munculText.innerHTML = `Output: ${text.value}`;
+      });
+
+      undo.addEventListener("dblclick", () => {
+        //cara deteksi array nek di walik?
+        if (tampung[tampung.length - 1] == "reverse") {
+          reverseText(text.value);
+        } else {
+          munculText.innerHTML = `Output: ${text.value}`;
+        }
+      });
+
+      function reverseText(stringg) {
+        reverseString = stringg.split("").reverse().join("");
+        return (munculText.innerHTML = `Output: ${reverseString}`);
+      }
+    </script>
+  </body>
+</html>
